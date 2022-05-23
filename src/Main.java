@@ -1,73 +1,32 @@
-import java.util.Scanner;
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
-        Doctor myDoctor = new Doctor("Andrea Tejada");
-        myDoctor.name = "Paula Abad";
-        myDoctor.showName();
-        myDoctor.showId();
-        System.out.println(Doctor.id);
 
-        Doctor.id++;
+        // Lo voy a comentar solo para la clase 10 del video showMenu();
 
-        Doctor MyDoctorAnn = new Doctor();
-        myDoctor.showId();
-        System.out.println(Doctor.id);
+        Doctor myDoctor = new Doctor("Paula Abad", "Cirujana");
+        /* System.out.println(myDoctor.name);
+        System.out.println(myDoctor.speciality);
+        */
+        myDoctor.addAvailableAppointment(new Date(), "4pm");
+        myDoctor.addAvailableAppointment(new Date(), "10am");
+        myDoctor.addAvailableAppointment(new Date(), "1pm");
+
+        for (Doctor.AvailableAppointment aA: myDoctor.getAvailableAppointments()) {
+            System.out.println(aA.getDate() + " " + aA.getTime());
+        }
+
+        /*System.out.println(myDoctor.getAvailableAppointments());
+
+        Patient patient = new Patient("Andrea", "andrea@mail.com");
+        patient.setWeight(54.6);
+        System.out.println(patient.getWeight());
+
+        patient.setPhoneNumber("12345678");
+        System.out.println(patient.getPhoneNumber());
+        */
     }
 
-    public static void showMenu(){
-        System.out.println("Welcome to My Appointments");
-        System.out.println("Selecciona la opción deseada");
 
-        int response = 0;
-        do {
-            System.out.println("1. Doctor");
-            System.out.println("2. Patient");
-            System.out.println("0. Salir");
-
-            Scanner sc = new Scanner(System.in);
-            response = Integer.valueOf(sc.nextLine());
-
-            switch (response){
-                case 1:
-                    System.out.println("Doctor");
-                    break;
-                case 2:
-                    response = 0;
-                    showPatientMenu();
-
-                    break;
-                case 0:
-                    System.out.println("Thank you for you visit");
-                    break;
-                default:
-                    System.out.println("Please select a correct answer");
-            }
-        }while (response != 0);
-    }
-
-    public static void showPatientMenu(){
-        int response = 0;
-        do {
-            System.out.println("\n\n");
-            System.out.println("Patient");
-            System.out.println("1. Book an appointment");
-            System.out.println("2. My appointments");
-            System.out.println("0. Return");
-
-            Scanner sc = new Scanner(System.in);
-            response = Integer.valueOf(sc.nextLine());
-
-            switch (response){
-                case 1:
-                    System.out.println("::Book an appointment");
-                    break;
-                case 2:
-                    System.out.println("::My appointments");
-                    break;
-                case 0:
-                    showMenu();
-                    break;
-            }
-        }while (response != 0);
-    }
 }
