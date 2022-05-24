@@ -1,17 +1,13 @@
-public class Patient {
-    // Atributos
-    int id;
+package model;
+
+public class User {
+    private int id;
     private String name;
     private String email;
     private String address;
     private String phoneNumber;
-    private String birthday;
-    private double weight;
-    private double height;
-    private String blood;
 
-    Patient(String name, String email) {
-        System.out.println("El nombre del Paciente es: "+ name);
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -52,7 +48,6 @@ public class Patient {
         return phoneNumber;
     }
 
-    // The telephone number is set to 8 digits.
     public void setPhoneNumber(String phoneNumber) {
         if (phoneNumber.length() > 8) {
             System.out.println("El número Telefónico debe ser de 8 dígitos");
@@ -61,36 +56,9 @@ public class Patient {
         }
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    // Modify get to add a parameter to specify the measure presented Kg.
-    public String getWeight() {
-        return this.weight + " Kg.";
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public String getHeight() {
-        return height + " Mts.";
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public String getBlood() {
-        return blood;
-    }
-
-    public void setBlood(String blood) {
-        this.blood = blood;
+    @Override
+    public String toString() {
+        return "model.User: " + name + ", Email: " + email+
+                "\nAddress: " + address + ". Phone: " + phoneNumber;
     }
 }

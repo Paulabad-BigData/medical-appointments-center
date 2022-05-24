@@ -1,11 +1,25 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor {
-    static int id = 0; // Autoincrement
-    private String name;
-    private String email;
+public class Doctor extends User {
+    // Atributos
     private String speciality;
+
+    Doctor(String name, String email) {
+        super(name,email);
+        System.out.println("El nombre del model.Doctor asignado es: " + name);
+        this.speciality = speciality;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
 
     /**
      * This goes as a separate class here will apply Nested Classes
@@ -16,31 +30,20 @@ public class Doctor {
 
     // AvailableAppointment
 
-
-    Doctor() {
-        System.out.println("Construyendo el objeto Doctor");
-    }
-
-    Doctor(String name, String speciality) {
-        System.out.println("El nombre del Doctor es: " + name);
-        id++;
-        this.name = name;
-        this.speciality = speciality;
-    }
-
     /**
      * behaviors or methods:
      * 1- The first method is showName to show the name of the doctor.
      * 2- Method id autoincrement show
      */
+    /*
     public void showName( ){
         System.out.println(name);
     }
 
     public void showId() {
-        System.out.println("ID Doctor: " + id);
+        System.out.println("ID model.Doctor: " + id);
     }
-
+    */
     // Arraylist
     ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
     public void addAvailableAppointment(Date date, String time) {
@@ -49,6 +52,12 @@ public class Doctor {
 
     public ArrayList<AvailableAppointment> getAvailableAppointments() {
         return availableAppointments;
+    }
+
+    // Method toString Available Appointments (2)
+    @Override
+    public String toString() {
+        return super.toString() + "\n Speciality: " + speciality + "\n Available" + availableAppointments.toString();
     }
 
     // Nested Class (Clase Anidada)
@@ -61,6 +70,8 @@ public class Doctor {
             this.date = date;
             this.time = time;
         }
+
+        // Getters & Setters ID, Date, Time
 
         public int getId() {
             return id;
@@ -84,6 +95,12 @@ public class Doctor {
 
         public void setTime(String time) {
             this.time = time;
+        }
+
+        // Method toString AvailableAppointments (1)
+        @Override
+        public String toString() {
+            return "Available Appointments \n Date: " + date + "\n Time: " + time;
         }
     }
 
