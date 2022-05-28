@@ -2,7 +2,6 @@ package model;
 
 import java.util.Date;
 
-public class ISchedulable {
-    // Method
+public interface ISchedulable {
     void schedule(Date date, String time);
 }
